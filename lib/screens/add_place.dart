@@ -25,8 +25,16 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
         child: Column(
           children: [
             TextField(
-              decoration: InputDecoration(label: Text('Title')),
+              decoration: InputDecoration(
+                labelText: 'Title',
+                labelStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
+              ),
               controller: _titleController,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onBackground,
+              ),
             ),
             SizedBox(height: 16),
             ElevatedButton.icon(
