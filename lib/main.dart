@@ -1,3 +1,4 @@
+import 'package:favourite_place/screens/place_list.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,9 +13,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
       ),
-      //home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: PlaceListScreen(),
     );
   }
 }
