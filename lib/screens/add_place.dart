@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AddPlacecreen extends StatefulWidget {
-  const AddPlacecreen({super.key});
+class AddPlaceScreen extends StatefulWidget {
+  const AddPlaceScreen({super.key});
 
   @override
-  State<AddPlacecreen> createState() => _AddPlacecreenState();
+  State<AddPlaceScreen> createState() => _AddPlaceScreenState();
 }
 
-class _AddPlacecreenState extends State<AddPlacecreen> {
+class _AddPlaceScreenState extends State<AddPlaceScreen> {
   final _titleController = TextEditingController();
 
   @override
@@ -21,11 +21,18 @@ class _AddPlacecreenState extends State<AddPlacecreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Add New Place')),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.all(12),
         child: Column(
           children: [
             TextField(
               decoration: InputDecoration(label: Text('Title')),
               controller: _titleController,
+            ),
+            SizedBox(height: 16),
+            ElevatedButton.icon(
+              onPressed: () {},
+              label: Text('Add Place'),
+              icon: Icon(Icons.add),
             ),
           ],
         ),
