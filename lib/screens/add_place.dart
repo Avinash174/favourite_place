@@ -1,3 +1,4 @@
+import 'package:favourite_place/widgets/image_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -13,6 +14,7 @@ class AddPlaceScreen extends ConsumerStatefulWidget {
 
 class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   final _titleController = TextEditingController();
+  String? _pickedImagePath;
 
   @override
   void dispose() {
@@ -22,13 +24,18 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
 
   void _savePlace() {
     final title = _titleController.text.trim();
-    if (title.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('Please enter a title')));
+    if (title.isEmpty || _pickedImagePath == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter a title and pick an image')),
+      );
       return;
     }
-    final place = Place(title: title, image: '', location: '', description: '');
+    final place = Place(
+      title: title,
+      image: _pickedImagePath!,
+      location: '',
+      description: '',
+    );
     ref.read(userPlacesProvider.notifier).addPlace(place);
     Navigator.pop(context);
   }
@@ -53,7 +60,15 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
                 color: Theme.of(context).colorScheme.onBackground,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16), // Add space between title and image box
+            ImageInput(
+              onPickImage: (path) {
+                setState(() {
+                  _pickedImagePath = path;
+                });
+              },
+            ),
+            const SizedBox(height: 16),
             ElevatedButton.icon(
               onPressed: _savePlace,
               label: Text('Add Place'),
