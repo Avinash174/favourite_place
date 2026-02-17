@@ -13,9 +13,9 @@ class UserPlacesNotifier extends StateNotifier<List<Place>> {
     );
     state = [...state, newPlace];
   }
-
-  final userPlacesProvider =
-      StateNotifierProvider<UserPlacesNotifier, List<Place>>(
-        (ref) => UserPlacesNotifier(),
-      );
 }
+
+final userPlacesProvider =
+    StateNotifierProvider<UserPlacesNotifier, List<Place>>(
+      (ref) => UserPlacesNotifier(),
+    );
