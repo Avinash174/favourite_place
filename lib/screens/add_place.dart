@@ -60,7 +60,7 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
                 color: Theme.of(context).colorScheme.onBackground,
               ),
             ),
-            const SizedBox(height: 16), // Add space between title and image box
+            const SizedBox(height: 16), // Add space between t itle and image box
             ImageInput(
               onPickImage: (path) {
                 setState(() {
